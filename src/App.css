@@ -1,0 +1,12 @@
+.bg-image {
+  /*background-color: black;
+  background-image: url(bg.jpg);
+  background-attachment: fixed;*/
+  /*background-repeat: repeat;*/
+}
+
+.bg-parallax {
+  height: 1000px;
+  opacity: 50%;
+  border-style: dashed;
+}
