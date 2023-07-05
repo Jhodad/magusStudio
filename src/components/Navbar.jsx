@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "./Navbar.css";
 import title from "../localAssets/Title.png";
+import navbarButton from "../localAssets/navigation.png"
+import { timeout } from "./objects/Tools";
 
 
 // NAVBAR
@@ -10,10 +12,19 @@ function CustomNavbar() {
   const [isMobile, setIsMobile] = useState()
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [toggle, setToggle] = useState(false)
+  const [isClosing, setIsClosing] = useState()
 
   // Toggle drawer button
   function toggleDrawer() {
-    setToggle(!toggle);
+    setToggle(true);
+  }
+
+  async function closeDrawer() {
+    setIsClosing(true)
+    console.log("i clicked " + isClosing)
+    await timeout(250); //for 1 sec delay  
+    setIsClosing(false)
+    setToggle(false)
   }
 
   // Check if mobile
@@ -36,7 +47,7 @@ function CustomNavbar() {
     window.addEventListener('resize', reportWindowSize)
     //  Cleanup for componentWillUnmount
     return () => window.removeEventListener('resize', reportWindowSize)
-  }, [/*windowWidth*/])
+  }, [windowWidth])
 
   return (
     <>
@@ -76,48 +87,60 @@ function CustomNavbar() {
 
       {/* If COLLAPSED */}
       {isMobile && toggle
-
-
         ?
-        <div className="drawer-v2-bg" onClick={() => toggleDrawer()}>
-          <div className="drawer-v2">
+        <div>
+          <div className="drawer-v2-bg" onClick={() => closeDrawer()} />
+          <div className="drawer-col">
+            <div className={!isClosing ? "drawer-v2 drawerIn" : "drawer-v2 drawerOut"}>
 
-            {/* Drawer Header */}
+              {/* Drawer Header */}
+              <div
+                className="drawer-header">
+                <Nav.Link className="drawer-title" href="/">
+                  <img src={title} />
+                </Nav.Link>
+                <span fluid className="rgb-Line drawer-splitter" />
+
+                {/* Drawer Body */}
+              </div>
+              <Nav className="drawer-body">
+
+                <Nav.Link className="drawer-rows" href="/about">
+                  <h1 className="drawer-text-style">About</h1>
+                </Nav.Link>
+
+                <Nav.Link className="drawer-rows" href="/samples">
+                  <h1 className="drawer-text-style">Samples</h1>
+                </Nav.Link>
+
+                <Nav.Link className="drawer-rows" href="/offers">
+                  <h1 className="drawer-text-style">Offers</h1>
+                </Nav.Link>
+
+                <Nav.Link className="drawer-rows" href="/contact">
+                  <h1 className="drawer-text-style">Contact</h1>
+                </Nav.Link>
+                {/* <button onClick={() => toggleDrawer()}>TOGGLE</button> */}
+              </Nav>
+              {/* <span fluid className="rgb-Line drawer-splitter" /> */}
+            </div >
             <div
-              className="drawer-header">
-              <Nav.Link className="drawer-title" href="/">
-                <img src={title} />
-              </Nav.Link>
-              <span fluid className="rgb-Line drawer-splitter" />
-
-              {/* Drawer Body */}
+              className={!isClosing ? "drawer-toggle drawerIn" : "drawer-toggle drawerOut"}
+              onClick={() => closeDrawer()} >
+              <img
+                src={navbarButton}
+                className="drawer-toggle-icon"
+              />
             </div>
-            <Nav className="drawer-body">
-
-              <Nav.Link className="drawer-rows" href="/about">
-                <h1 className="drawer-text-style">About</h1>
-              </Nav.Link>
-
-              <Nav.Link className="drawer-rows" href="/samples">
-                <h1 className="drawer-text-style">Samples</h1>
-              </Nav.Link>
-
-              <Nav.Link className="drawer-rows" href="/offers">
-                <h1 className="drawer-text-style">Offers</h1>
-              </Nav.Link>
-
-              <Nav.Link className="drawer-rows" href="/contact">
-                <h1 className="drawer-text-style">Contact</h1>
-              </Nav.Link>
-
-            </Nav>
-            {/* <span fluid className="rgb-Line drawer-splitter" /> */}
-            <button onClick={() => toggleDrawer()}>TOGGLE</button>
-
-          </div >
+          </div>
         </div >
 
-        : <button onClick={() => toggleDrawer()}>TOGGLE</button>
+        : isMobile && !toggle
+          ? <img
+            src={navbarButton}
+            className={"drawer-toggle-sticky"}
+            onClick={() => toggleDrawer()} />
+          : <div />
 
       }
 

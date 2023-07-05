@@ -88,7 +88,6 @@
   box-shadow: 0em 0em 0.1em 0.1em rgba(185, 129, 7, 0.904);
   color: white;
   /*background-image: url(../localAssets/padoru.jpg);*/
-  border-style: none;
   text-decoration: none;
   background-size: contain;
   background-repeat: no-repeat;
@@ -308,17 +307,71 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: fixed;
+  justify-self: flex-start;
+  position: relative;
   flex-direction: column;
   width: 35vw;
   min-width: 180px;
   height: 100vh;
   z-index: 1;
-  padding: auto;
+  padding: 0;
+  margin: 0;
   overflow: auto;
   background-color: #3a3a3ae1;
-  box-shadow: -1.2em 0em 0.6em 2em rgba(0, 0, 0, 0.712);
+  box-shadow: -1.2em 4.3em 0.6em 2em rgba(0, 0, 0, 0.712);
   backdrop-filter: blur(1rem);
+}
+
+.drawerIn {
+  animation: drawerIn .1s ease-out;
+}
+
+.drawerOut {
+  animation: drawerOut .3s ease-out;
+}
+
+@keyframes drawerIn {
+  0% {
+    transform: translate(-35vw);
+  }
+
+  100% {
+    transform: translate(0vw);
+  }
+}
+
+@keyframes drawerOut {
+  0% {
+    transform: translate(0vw);
+  }
+
+  100% {
+    transform: translate(-35vw);
+  }
+}
+
+.drawer-toggle-sticky {
+  position: fixed;
+  width: 5vw;
+  height: 5vw;
+  background-color: white;
+  z-index: 1;
+}
+
+.drawer-toggle {
+  display: flex;
+  justify-content: flex-end;
+  justify-self: flex-end;
+  margin: 0;
+  padding: 0;
+  width: 5vw;
+  height: 100vh;
+}
+
+.drawer-toggle-icon {
+  width: 5vw;
+  height: 5vw;
+  background-color: rgba(255, 255, 255, 0.781);
 }
 
 .drawer-v2-bg {
@@ -418,7 +471,16 @@
   /* box-shadow: 0em 0em 0.6em 0.2em rgba(0, 0, 0, 0.712); */
   box-shadow: inset 0em 0em 8em 0.2em rgba(255, 255, 255, 0.089);
   backdrop-filter: blur(1rem);
+}
 
+.drawer-col {
+  position: fixed;
+  display: flex;
+  flex-direction: col;
+  justify-content: space-between;
+  padding: auto;
+  width: 40vw;
+  z-index: 1;
 }
 
 .drawer-text-style {

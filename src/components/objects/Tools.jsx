@@ -26,6 +26,9 @@ export function getCurrentWidth() {
     return getSnapshot().width;
 }
 
+export function timeout(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+}
 
 // interface SwipeInput {
 //     onSwipedLeft: () => void
