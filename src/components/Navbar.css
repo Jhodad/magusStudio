@@ -189,12 +189,24 @@
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(-2deg);
+  0% {
+    transform: rotate(0deg);
   }
 
-  to {
-    transform: rotate(2deg);
+  25% {
+    transform: rotate(-1deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(1deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }
 
@@ -376,10 +388,10 @@
 
 .drawer-v2-bg {
   position: fixed;
-  width: 120vw;
+  width: 100vw;
   height: 100vh;
   /* background-color: #404140e5; */
-  backdrop-filter: blur(0.3rem);
+  backdrop-filter: blur(0.2rem);
   z-index: 1;
 }
 
@@ -417,7 +429,7 @@
   /* delays for 1 second */
   -webkit-transition-delay: .1s;
   /* for Safari & Chrome */
-  animation: App-logo-spin infinite 1s alternate-reverse;
+  animation: App-logo-spin 1s linear infinite both;
 }
 
 .drawer-splitter {
@@ -464,13 +476,9 @@
   transform: scale(-120%);
   transform: scale(120%);
   height: auto;
-  transition-delay: .1s;
-  /* delays for 1 second */
-  -webkit-transition-delay: .1s;
-  /* for Safari & Chrome */
   /* box-shadow: 0em 0em 0.6em 0.2em rgba(0, 0, 0, 0.712); */
-  box-shadow: inset 0em 0em 8em 0.2em rgba(255, 255, 255, 0.089);
-  backdrop-filter: blur(1rem);
+  /* box-shadow: inset 0em 0em 8em 0.2em rgba(255, 255, 255, 0.089); */
+  backdrop-filter: blur(2rem);
 }
 
 .drawer-col {

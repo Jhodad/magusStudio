@@ -92,6 +92,9 @@ function Home() {
         </Container>
 
         <Container fluid className="full-1">
+
+          <svg />
+
           <Container fluid className="gridHolder">
 
             <Col fluid>

@@ -114,12 +114,15 @@ p {
     overflow: visible;
     position: relative;
     margin: 0;
+    border-radius: 0;
+    border: 0;
     box-shadow: 0em 0em 4em -1em rgb(0, 0, 0);
 }
 
 .full-1 {
-    border-radius: .5em;
-    background-color: var(--moduleFull);
+    border-radius: 0;
+    /* background-color: var(--lightGray); */
+    background-color: rgb(14, 146, 199);
     box-shadow: 0em 0em 4em -1em rgb(54, 54, 54);
     height: auto;
     padding-left: .5em;
@@ -128,7 +131,16 @@ p {
     padding-bottom: 10em;
     margin: 0;
     width: auto;
+    /* transform: skew(20deg); */
 }
+
+svg {
+    background-color: red;
+    width: 500px;
+    aspect-ratio: 0;
+    clip-path: polygon(50% 2.4%, 34.5% 33.8%, 0% 38.8%, 25% 63.1%, 19.1% 97.6%);
+}
+
 
 .full-2 {
     height: auto;
