@@ -57,7 +57,7 @@ function CustomNavbar() {
         <div className="navContainer">
           <Navbar className="navBar" >
             <Navbar.Collapse className="navbar-notCollapsed" fluid>
-              <Nav fluid className="centered-flex">
+              <Nav fluid className="navContainer-centered">
                 <Nav.Link className="navLink-Container " href="/about">
                   <p className="text-style">About</p>
                 </Nav.Link>

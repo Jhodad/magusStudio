@@ -3,7 +3,11 @@
     --moduleFull: rgb(64, 53, 165);
     --darkGray: rgb(22, 22, 22);
     --lightGray: rgb(57, 57, 57);
-
+    --lightBlue: #1683cc;
+    --lightBlueGrad: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(22, 131, 204, 1) 47%, rgba(11, 179, 223, 1) 100%);
+    --lightBlueGradReverse: linear-gradient(-90deg, rgba(2, 0, 36, 1) 0%, rgba(22, 131, 204, 1) 47%, rgba(11, 179, 223, 1) 100%);
+    --svgGradientBlue1: #00b7ff;
+    --svgGradientBlue2: #3458fa;
 }
 
 form, input {
@@ -56,7 +60,7 @@ p {
 
 /* Custom styles */
 .page-header {
-    width: inherit;
+    width: 100%;
     margin: 0;
     border: none;
     padding: 0;
@@ -72,7 +76,7 @@ p {
 }
 
 .page-header-img {
-    width: 100vw;
+    width: 100%;
     height: auto;
     margin: 0;
     opacity: 70%;
@@ -86,6 +90,7 @@ p {
 }
 
 .body-splitter-lg {
+    width: 100%;
     height: 40vh;
 }
 
@@ -100,10 +105,14 @@ p {
 }
 
 .page-holder-modules {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    flex-direction: column;
     width: 90vw;
-    padding: 0;
-    height: auto;
+    padding: auto;
+    margin: auto;
+    height: inherit;
 }
 
 .page-holder-full {
@@ -117,133 +126,7 @@ p {
     border-radius: 0;
     border: 0;
     box-shadow: 0em 0em 4em -1em rgb(0, 0, 0);
-}
-
-.full-1 {
-    border-radius: 0;
-    /* background-color: var(--lightGray); */
-    background-color: rgb(14, 146, 199);
-    box-shadow: 0em 0em 4em -1em rgb(54, 54, 54);
-    height: auto;
-    padding-left: .5em;
-    padding-right: .5em;
-    padding-top: 10em;
-    padding-bottom: 10em;
-    margin: 0;
-    width: auto;
-    /* transform: skew(20deg); */
-}
-
-svg {
-    background-color: red;
-    width: 500px;
-    aspect-ratio: 0;
-    clip-path: polygon(50% 2.4%, 34.5% 33.8%, 0% 38.8%, 25% 63.1%, 19.1% 97.6%);
-}
-
-
-.full-2 {
-    height: auto;
-    width: auto;
-    padding-left: .5em;
-    padding-right: .5em;
-    padding-top: 10em;
-    padding-bottom: 10em;
-    margin: 0;
-}
-
-.welcome-body {
-    background-color: var(--lightGray);
-    position: relative;
-    top: -45px;
-    height: 30vh;
-    box-shadow: 0em 1em 1em 0.5em rgba(0, 0, 0, 0.651);
-    padding: 0;
-    border-radius: 1em;
-    justify-content: center;
-    justify-self: center;
-    margin: auto;
-    /*
-    Adds its own scroll bar:
-        overflow: auto;
-    */
-
-}
-
-.welcome-body:hover {
-    background-color: rgb(75, 75, 75);
-}
-
-.welcome-text {
-    text-align: center;
-    padding: 1em;
-    padding-left: 3em;
-    padding-right: 3em;
-    height: inherit;
-    justify-content: center;
-    justify-self: center;
-    margin: auto
-}
-
-.services-left {
-    border-style: dashed;
-    width: 60vw;
-    display: flex;
-    height: auto;
-    border-color: red;
-}
-
-.services-right {
-    border-style: dashed;
-    border-color: chartreuse;
-    width: 25vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.services-btn {
-    margin: 10px;
-
-}
-
-.services-btn:hover {
-    transform: scale(1.08);
-    transform-origin: 50vw;
-    transition-property: background-color;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in;
-    transition-delay: 0.3s;
-    background-color: aqua;
-    background: -webkit-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    background: -o-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    background: -moz-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    background: linear-gradient(to right, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    box-shadow: 0em 0em .2em .2em rgb(0, 0, 0);
-    border: 0.1px;
-}
-
-.services-btn:focus {
-    transform: scale(1.08);
-    transform-origin: 50vw;
-    transition-property: background-color;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in;
-    transition-delay: 0.3s;
-    background-color: aqua;
-    background: -webkit-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    background: -o-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    background: -moz-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    background: linear-gradient(to right, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-    box-shadow: 0em 0em .2em .2em rgb(0, 0, 0);
-    border: 0.1px;
-}
-
-.services-infoHolder {
-    padding-top: 4em;
-    padding-left: 0;
-    padding-right: 0;
-    height: auto;
+    /* clip-path: polygon(0 5vh, 100% 0, 100% 100%, 0 100% ); */
 }
 
 .page-footer {
@@ -276,6 +159,51 @@ svg {
     box-shadow: 0em .5em 2em 1em rgba(0, 0, 0, 0.74);
 }
 
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2vw;
+    margin: auto;
+    text-align: center;
+    background-color: var(--lightGray);
+    width: 100%;
+    height: 30vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: min(10vh, 1.1em);
+    overflow: auto;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+    /* border-radius: 10px; */
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 100%;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
+    padding: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.grid-object {
+    display: flex;
+    border-radius: 10px;
+    background-color: #2892d7;
+    width: fit-content;
+    height: 10vh;
+}
+
 .btn-primary {
     background-image: none;
     border: none;
@@ -297,54 +225,9 @@ svg {
     background-color: #2892d7;
 }
 
-.centered-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .centered-text {
     text-align: center;
 }
-
-.carousel-custom {
-    box-shadow: 0em 0em 3em 1em rgba(124, 124, 124, 0.74);
-}
-
-.carousel-custom-r {
-
-    display: flex;
-    justify-content: flex-end;
-    margin: auto;
-}
-
-.carousel-left {
-    width: 40vw;
-    display: flex;
-    height: auto;
-    background-color: var(--darkGray);
-}
-
-.carousel-right {
-    width: 40vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.carousel-img {
-    display: block;
-
-    height: 100%;
-}
-
-.carousel-item {
-    width: 70vw;
-    height: 50vh;
-}
-
-.gridHolder {}
 
 .row-home {
     justify-content: center;
@@ -367,76 +250,4 @@ svg {
 .contact-container {
     background-color: rgb(37, 37, 37);
     height: 4em;
-}
-
-.body-splitter-parallax {
-    z-index: -1000;
-    height: 500px;
-    width: 100%;
-}
-
-.btn-login {
-    position: relative;
-    width: 20vw;
-    height: 6vh;
-    top: -22vh;
-    z-index: 10;
-    margin: auto;
-    padding: 2em;
-    border-radius: .5em;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    background-color: rgba(6, 155, 175, 0.658);
-    font-size: 2em;
-    font-family: "Courier New", monospace;
-    font-weight: bold;
-    box-shadow: 0em .5em 2em 1em rgba(0, 0, 0, 0.74);
-}
-
-.btn-login:hover {
-    width: 25vw;
-    background-color: rgb(6, 155, 175);
-    box-shadow: 0em 0em 2em 1em rgba(0, 0, 0, 0.74);
-}
-
-.btn-login:focus {
-    background-color: rgba(23, 189, 45, 0.774);
-    box-shadow: 0em 0em 2em 1em rgba(0, 0, 0, 0.74);
-}
-
-.btn-login2 {
-    position: relative;
-    width: 16vw;
-    height: 6vh;
-    top: -22vh;
-    z-index: 10;
-    margin: auto;
-    padding: 2em;
-    border-radius: .5em;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    background-color: rgba(6, 175, 28, 0.658);
-    font-size: 2em;
-    font-family: "Courier New", monospace;
-    font-weight: bold;
-    box-shadow: 0em .5em 2em 1em rgba(0, 0, 0, 0.74);
-}
-
-.btn-modal {
-    position: inherit;
-    margin: auto;
-    width: 10em;
-    padding: .8em;
-    border-radius: .5em;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    background-color: rgba(6, 155, 175, 0.658);
-    font-family: "Courier New", monospace;
-    font-weight: bold;
 }

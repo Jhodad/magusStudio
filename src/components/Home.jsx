@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Carousel, Container, Row, Col, Image, Button } from "react-bootstrap";
+import { Carousel, div, Row, Col, Image, Button } from "react-bootstrap";
 import { Parallax } from "react-parallax";
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import "./Home.css";
-import InfoCard from "./objects/InfoCard.jsx";
+import InfoCard from "./objects/InfoCard.jsx"
 import ServCard from "./objects/ServCard.jsx";
 import servicesInfo from "./docs/servicesInfo.json"
 
@@ -16,285 +16,134 @@ import img_test from "../localAssets/Title Art Blue Hues Damaged Background.png"
 import magusHat from "../localAssets/MS_APNG_STATIC_1024_60.png"
 import magusCard from "../localAssets/bgTest.png"
 import magusGif from "../localAssets/Cropped.gif"
+import reactLogo from "../localAssets/logo512.png"
 
 
 function Home() {
 
-  //Do stuff on load
+  const [isMobile, setIsMobile] = useState()
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [toggle, setToggle] = useState(false)
+  const [isClosing, setIsClosing] = useState()
+  const [data, setData] = useState(servicesInfo.services)
+  const [currentService, setCurrentService] = useState()
+
+  // Check if mobile
+  function reportWindowSize() {
+    setWindowWidth(window.innerWidth)
+    if (window.innerWidth < 768) {
+      console.log(window.innerHeight, window.innerWidth)
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
   useEffect(() => {
-    selectInfoText('')
-  }, [])
-
-  const [data, setData] = useState(servicesInfo.services);
-  const [currentService, setCurrentService] = useState();
-
-  const [verified, setVerified] = useState(false)
-  const setToggle = () => {
-    setVerified(!verified)
-  }
-
-  // One way to get data on demand into an array
-  /*
-  const data = [];
-    function getData() {
-      servicesInfo.services.map(({ id, serviceName, descFull, descShort }) => {
-        data.push({ id, serviceName, descFull, descShort });
-      })
-      console.log(data)
+    if (!isMobile) {
+      setToggle(false)
     }
-  */
+    reportWindowSize();
+    // Trigger this function on resize
+    window.addEventListener('resize', reportWindowSize)
+    //  Cleanup for componentWillUnmount
+    return () => window.removeEventListener('resize', reportWindowSize)
+  }, [windowWidth])
 
-  function selectInfoText(serv) {
-    switch (serv) {
-      case 'websites':
-        return setCurrentService(<ServCard fluid descShort={data[0].descShort} descFull={data[0].descFull} />)
-
-      case 'serv1':
-        return setCurrentService(<ServCard fluid descShort={data[1].descShort} descFull={data[1].descFull} />)
-
-      case 'serv2':
-        return setCurrentService(<ServCard fluid descShort={data[2].descShort} descFull={data[2].descFull} />)
-
-      default:
-        return setCurrentService(<ServCard fluid descShort={data[0].descShort} descFull={data[0].descFull} />)
-    }
-  }
 
   return (
 
     <div>
-      <Container fluid className="page-header">
+
+      {/* If NOT COLLAPSED */}
+      {
+        !isMobile && <div></div>
+      }
+
+      {
+        isMobile && <div></div>
+      }
+
+
+      <div className="page-header">
         <Image
-          fluid
+
           className="page-header-img"
           src={magusGif}
           alt="HEADER"
         />
-      </Container>
+      </div>
 
 
-      <Container fluid className="page-holder-modules">
-        <Container fluid className="welcome-body welcome-text welcome">
+      <div className="page-holder-modules">
+        <div className="welcome">
           <h1>Welcome to Magus Studio</h1>
           <h3><br></br>
             We offer a vast assortment of computer services ranging from PC maintenance to custom websites and software.
           </h3>
-        </Container>
-      </Container>
+        </div>
+      </div>
 
 
-      <Container className="body-splitter-sm">  </Container>
+      <div className="body-splitter-lg" />
 
 
-      <Container fluid className="page-holder-full">
-        <Container fluid className="text-centered">
+      <div className="page-holder-full">
 
-        </Container>
+        <div className="grid-container">
+          <div className="grid-row">
+            <InfoCard
+              title="Software Development"
+              image={reactLogo}
+              // `${props.image}?${new Date().getTime()}`
+              body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
+              id="1"
+            />
+            <InfoCard
+              title="Software Development"
+              image={magusCard}
+              body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
+              id="2"
+            />
+            <InfoCard
+              title="Software Development"
+              image={magusCard}
+              body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
+              id="3"
+            />
+            <InfoCard
+              title="Software Development"
+              image={magusCard}
+              body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
+              id="4"
+            />
+            <InfoCard
+              title="Software Development"
+              image={magusCard}
+              body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
+              id="5"
+            />
 
-        <Container fluid className="full-1">
+          </div>
 
-          <svg />
+        </div>
 
-          <Container fluid className="gridHolder">
-
-            <Col fluid>
-              <Row fluid className="row-home">
-                <Container fluid className="services-left">
-                  <Container fluid className="services-infoHolder">
-                    {currentService}
-
-                  </Container>
-                </Container>
-
-                <Container className="services-right">
-                  <Button className="services-btn" onClick={() => selectInfoText('websites')}> <h1>Custom Websites</h1> </Button>
-                  <Button className="services-btn" onClick={() => selectInfoText('serv1')}> <h1>Serv1</h1> </Button>
-                  <Button className="services-btn" onClick={() => selectInfoText('serv2')}> <h1>Serv2</h1> </Button>
-                  <Button className="services-btn" onClick={() => selectInfoText('serv3')}> <h1>Serv2</h1> </Button>
-                  <Button className="services-btn"> <h1>Custom Websites</h1> </Button>
-                  <Button className="services-btn"> <h1>Custom Websites</h1> </Button>
-                  <Button className="services-btn"> <h1>Custom Websites</h1> </Button>
-                  <Button className="services-btn"> <h1>Custom Websites</h1> </Button>
-                  <Button className="services-btn"> <h1>Custom Websites</h1> </Button>
-                  <Button className="services-btn"> <h1>Custom Websites</h1> </Button>
-                </Container>
-              </Row>
-            </Col>
-
-          </Container>
-        </Container>
-
-        <Container fluid className="full-2">
-          <Container fluid className="gridHolder">
-
-            <Col fluid>
-              <Row fluid className="row-home">
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we aaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaoffer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custtes" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custtes" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custtes" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custtes" />
-                <InfoCard title="Custom Websites" imageURL={img_logo} body="Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websites Small description of what we offer in custom websies" />
-              </Row>
-            </Col>
-
-            <Button>
-              All services
-            </Button>
-
-          </Container>
-        </Container>
+      </div>
 
 
-      </Container>
-
-      {/* ======================== */}
-      {/*     CLIENTS CAROUSEL     */}
-      {/* ======================== */}
-      <Container fluid className="page-holder-full">
-
-
-        <AwesomeSlider>
-          <div data-src="/path/to/image-0.png" />
-          <div data-src="/path/to/image-1.png" />
-          <div data-src="/path/to/image-2.jpg" />
-        </AwesomeSlider>
+      <div className="body-splitter-sm" />
 
 
 
-        <Container fluid className="full-1">
-          <Container fluid className="gridHolder">
-
-            <Col fluid>
-              <Row fluid className="row-home">
-
-
-                <Container className="carousel-left">
-                  <Container fluid className="services-infoHolder">
-                    <h1 className="centered-text">aspodalksdpaos iudpaois dpoai sdpoipoasidp aispod apsodi aposid paoisd </h1>
-                  </Container>
 
 
 
-                </Container>
-
-                <Container fluid className="carousel-right">
-                  <Container className="carousel-custom-r">
-                    <Carousel>
-
-                      <Carousel.Item className="carousel-item">
-                        <Image
-                          className="carousel-img"
-                          src={img_header}
-                          alt="FIRST slide"
-                        />
-                        <Carousel.Caption>
-                          <h3>stuff for website</h3>
-                          <p>
-                            Nulla vitae elit libero, a pharetra augue mollis interdum.
-                          </p>
-                        </Carousel.Caption>
-                      </Carousel.Item>
-
-                      <Carousel.Item>
-                        <Image
-                          className="carousel-img"
-                          src={img_header}
-                          alt="SECOND slide"
-                        />
-                        <Carousel.Caption>
-                          <h3>stuff for digital design</h3>
-                          <p>
-                            Nulla vitae elit libero, a pharetra augue mollis interdum.
-                          </p>
-                        </Carousel.Caption>
-                      </Carousel.Item>
-
-                      <Carousel.Item>
-                        <Image
-                          className="carousel-img"
-                          src={img_logo}
-                          alt="Third slide"
-                        />
-                        <Carousel.Caption>
-                          <h3>sstuff for noise collision</h3>
-                          <p>
-                            Nulla vitae elit libero, a pharetra augue mollis interdum.
-                          </p>
-                        </Carousel.Caption>
-                      </Carousel.Item>
-
-                    </Carousel>
-                  </Container>
-
-                </Container>
-
-              </Row>
-            </Col>
-
-          </Container>
-        </Container>
-
-
-
-      </Container>
-
-
-      <Container fluid className="body-splitter-sm">  </Container>
-
-      <Container fluid className="page-holder-full">
-
-      </Container>
-
-
-
-      <Parallax
-        blur={1}
-        strength={-800}
-        fluid
-        bgImage={img_test}
-        className="body-splitter-parallax centered-flex centered-text"
-      ></Parallax>
-
-      {/* SECOND BANNER */}
-      {/*
-        <Container fluid className="page-holder-full">
-          <Row className="show-grid text-center">
-            <Col xs={12} sm={4} className="person-wrapper">
-              <Image src={img_padoru1} circle className="profile-pic" />
-              <h3>Padoru!</h3>
-              <p>Text that goes blah blah!</p>
-            </Col>
-
-            <Col xs={12} sm={4} className="person-wrapper">
-              <Image src={img_padoru2} circle className="profile-pic" />
-              <h3>Padoru!</h3>
-              <p>Text that goes blah blah!</p>
-            </Col>
-
-            <Col xs={12} sm={4} className="person-wrapper">
-              <Image src={img_padoru3} circle className="profile-pic" />
-              <h3>Padoru!</h3>
-              <p>Text that goes blah blah!</p>
-            </Col>
-          </Row>
-        </Container>
-*/}
-
-      <Container fluid className="body-splitter-lg"></Container>
-
-
-
-      <Container fluid className="body-splitter-lg"></Container>
+      <div className="body-splitter-lg" />
 
       {/* ======================== */}
       {/*          FOOTER          */}
       {/* ======================== */}
-      <Container fluid className="page-footer">
+      {/* <div className="page-footer">
 
 
         <Row className="show-grid text-center centered-flex">
@@ -305,13 +154,13 @@ function Home() {
           </div>
           <h5>Mexico City</h5>
         </Row>
-      </Container>
+      </div> */}
 
-      <Container
-        fluid
-        className="text-center centered-flex contact-container"
+      {/* <div
+
+        className="text-center centered-flex contact-div"
       >
-        <Container className="social-media-container">
+        <div className="social-media-div">
           <h1></h1>
           <Row className="show-grid text-center">
             <Col xs={12} sm={4}>
@@ -326,9 +175,10 @@ function Home() {
               <Image src={img_logo} circle className="social-media-logo" />
             </Col>
           </Row>
-        </Container>
+        </div>
 
-      </Container>
+      </div> */}
+
     </div>
   );
 }
