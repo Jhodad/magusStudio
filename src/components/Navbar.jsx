@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "./Navbar.css";
 import title from "../localAssets/Title.png";
-import navbarButton from "../localAssets/navigation.png"
+import navbarButton from "../localAssets/nav.png"
 import { timeout } from "./objects/Tools";
 
 
@@ -87,8 +87,7 @@ function CustomNavbar() {
 
       {/* If COLLAPSED */}
       {isMobile && toggle
-        ?
-        <div>
+        ? <div>
           <div className="drawer-v2-bg" onClick={() => closeDrawer()} />
           <div className="drawer-col">
             <div className={!isClosing ? "drawer-v2 drawerIn" : "drawer-v2 drawerOut"}>

@@ -38,13 +38,10 @@ function InfoCard(props) {
                                     width="1" height="1" />
                             </pattern>
                         </defs>
-                        <circle className="circle-big" cx="50%" cy="50%" r="30%" fill={`url(#${props.id})`}/>
-                        {/* <image className="infoCard-img" href={props.imageURL} alt="" /> */}
+                        <circle className="circle-big" cx="50%" cy="50%" r="30%" fill={`url(#${props.id})`} />
+                        <image className="infoCard-img" href={props.imageURL} alt="" />
                         <circle className="circle-small" cx="25%" cy="25%" r="5%" />
                         <circle className="circle-small2" cx="25%" cy="25%" r="5%" />
-
-
-
                     </svg>
 
                 </div>

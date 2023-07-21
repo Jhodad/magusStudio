@@ -53,7 +53,8 @@
   height: 100%;
   background-color: rgba(44, 44, 44, 0.503);
   /* background-color: rgba(182, 27, 27, 0.418); */
-  box-shadow: 0em -3em 1em 4em rgba(0, 0, 0, 0.904);
+  /* box-shadow: 0em -3em 1em 4em rgba(0, 0, 0, 0.904); */
+  box-shadow: 0em -3.5em 1em 4em rgb(0, 0, 0);
   backdrop-filter: blur(.7rem);
 }
 
@@ -220,11 +221,6 @@
   height: 0.5em;
   min-height: 3px;
   max-height: 5px;
-  background: -webkit-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-  background: -o-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-  background: -moz-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-  background: linear-gradient(to right, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-  background-color: rgb(0, 0, 0);
   padding: 0;
   text-decoration: none;
   text-decoration-color: currentcolor;
@@ -234,13 +230,47 @@
   box-sizing: border-box;
   word-wrap: break-word;
   word-break: break-all;
-  /* animation: slide 3s normal infinite; */
-  /* animation: gradient 5s ease-out infinite; */
 
+  background-size: 300% 300%;
+  /* background-image: -webkit-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
+  background-image: -o-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
+  background-image: -moz-linear-gradient(left, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F); */
+  background-image: linear-gradient(to right, red 8%, yellow, #00CB07, #07A9FF, #062bfc, #6508df, #D92F7F);
+  background-color: rgb(0, 0, 0);
+  /* background-image: linear-gradient(-45deg, yellow 0%, yellow 25%, yellow 51%, #ff357f 100%); */
+  -webkit-animation: AnimateBG 20s ease infinite;
+  animation: AnimateBG 20s ease infinite;
 }
 
 .rgb-Line:hover {}
 
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 @keyframes slide {
   0% {
@@ -253,52 +283,6 @@
 
   100% {
     transform: translate(100vw);
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background: linear-gradient(to right, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
-  }
-
-  10% {
-    background: linear-gradient(to right, #D92F7F, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F);
-  }
-
-  20% {
-    background: linear-gradient(to right, #1B2F7F, #D92F7F, red, yellow, #00CB07, #07A9FF, #1044FF, );
-  }
-
-  30% {
-    background: linear-gradient(to right, #1044FF, #1B2F7F, #D92F7F, red, yellow, #00CB07, #07A9FF, );
-  }
-
-  40% {
-    background: linear-gradient(to right, #07A9FF, #1044FF, #1B2F7F, #D92F7F red, yellow, #00CB07);
-  }
-
-  50% {
-    background: linear-gradient(to right, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F, red, yellow, );
-  }
-
-  60% {
-    background: linear-gradient(to right, #07A9FF, #1044FF, #1B2F7F, #D92F7F red, yellow, #00CB07);
-  }
-
-  70% {
-    background: linear-gradient(to right, #1044FF, #1B2F7F, #D92F7F, red, yellow, #00CB07, #07A9FF, );
-  }
-
-  80% {
-    background: linear-gradient(to right, #1B2F7F, #D92F7F, red, yellow, #00CB07, #07A9FF, #1044FF, );
-  }
-
-  90% {
-    background: linear-gradient(to right, #D92F7F, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F);
-  }
-
-  100% {
-    background: linear-gradient(to right, red, yellow, #00CB07, #07A9FF, #1044FF, #1B2F7F, #D92F7F);
   }
 }
 
@@ -339,11 +323,11 @@
 }
 
 .drawerIn {
-  animation: drawerIn .1s ease-out;
+  animation: drawerIn .1s ease-in-out;
 }
 
 .drawerOut {
-  animation: drawerOut .3s ease-out;
+  animation: drawerOut .3s ease-in-out;
 }
 
 @keyframes drawerIn {
@@ -370,7 +354,7 @@
   position: fixed;
   width: 5vw;
   height: 5vw;
-  background-color: white;
+  /* background-color: white; */
   z-index: 1;
 }
 
@@ -387,7 +371,7 @@
 .drawer-toggle-icon {
   width: 5vw;
   height: 5vw;
-  background-color: rgba(255, 255, 255, 0.781);
+  /* background-color: rgba(255, 255, 255, 0.781); */
 }
 
 .drawer-v2-bg {

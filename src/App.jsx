@@ -13,7 +13,7 @@ import Navbar from "./components/Navbar";
 function App() {
 
   return (
-    <Container fluid="true">
+    <div>
       <Router>
         <Navbar />
           <Routes>
@@ -27,7 +27,7 @@ function App() {
 
 
       </Router>
-    </Container>
+    </div>
   )
 }
 

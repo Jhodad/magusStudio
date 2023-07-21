@@ -1,32 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Carousel, div, Row, Col, Image, Button } from "react-bootstrap";
-import { Parallax } from "react-parallax";
-import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import "./Home.css";
 import InfoCard from "./objects/InfoCard.jsx"
-import ServCard from "./objects/ServCard.jsx";
 import servicesInfo from "./docs/servicesInfo.json"
-
-import img_header from "../localAssets/YoutubeBanner.png";
-import img_fb from "../localAssets/nc.jpg";
-import img_logo from "../localAssets/logo512.png";
-import img_test from "../localAssets/Title Art Blue Hues Damaged Background.png";
 import magusHat from "../localAssets/MS_APNG_STATIC_1024_60.png"
+import magusText from "../localAssets/Title.png"
 import magusCard from "../localAssets/bgTest.png"
-import magusGif from "../localAssets/Cropped.gif"
+import magusGif from "../localAssets/cropped.png"
 import reactLogo from "../localAssets/logo512.png"
-
+import softDev from "../localAssets/softDev.png"
+import cssImg from "../localAssets/css.png"
+import cloud from "../localAssets/cloud.png"
+import linkedIn from "../localAssets/linkedin.png"
+import email from "../localAssets/email.png"
+import bgFront from "../localAssets/bgFront.png"
+import bgBack from "../localAssets/bgBack.png"
+import { Parallax, Background } from 'react-parallax';
 
 function Home() {
 
   const [isMobile, setIsMobile] = useState()
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [toggle, setToggle] = useState(false)
-  const [isClosing, setIsClosing] = useState()
-  const [data, setData] = useState(servicesInfo.services)
-  const [currentService, setCurrentService] = useState()
+  const [contact, setContact] = useState(false)
+
+  // Toggle contact button
+  function toggleContact() {
+    setContact(!contact);
+  }
 
   // Check if mobile
   function reportWindowSize() {
@@ -66,7 +67,7 @@ function Home() {
 
 
       <div className="page-header">
-        <Image
+        <img
 
           className="page-header-img"
           src={magusGif}
@@ -85,7 +86,23 @@ function Home() {
       </div>
 
 
-      <div className="body-splitter-lg" />
+      {/* <div className="body-splitter-lg" /> */}
+
+      <Parallax
+        renderLayer={percentage => (
+          <div
+            style={{
+              background: `rgba(10, 10, 10, ${0.8 - percentage})`,
+              filter: "blur(10rem)",               
+              left: '50%',
+              top: '50%',
+              width: "100vw",
+              height: "60vh"
+            }}
+          />
+        )}
+      >
+      </Parallax>
 
 
       <div className="page-holder-full">
@@ -101,28 +118,35 @@ function Home() {
             />
             <InfoCard
               title="Software Development"
-              image={magusCard}
+              image={softDev}
               body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
               id="2"
             />
             <InfoCard
               title="Software Development"
-              image={magusCard}
+              image={cloud}
+              body="Our in collaboration with technical and non-technical teams. We work in agile  in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
+              id="5"
+            />
+            <InfoCard
+              title="Software Development"
+              image={cssImg}
               body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
               id="3"
             />
             <InfoCard
               title="Software Development"
-              image={magusCard}
+              image={reactLogo}
               body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
               id="4"
             />
             <InfoCard
               title="Software Development"
-              image={magusCard}
-              body="Our developers build rich web and mobile products in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
+              image={cssImg}
+              body="Our in collaboration with technical and non-technical teams. We work in agile  in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile in collaboration with technical and non-technical teams. We work in agile teams & use coding best practices."
               id="5"
             />
+
 
           </div>
 
@@ -131,55 +155,143 @@ function Home() {
       </div>
 
 
-      <div className="body-splitter-sm" />
+      {/* <div className="body-splitter-sm" />
+      <div className="body-splitter-lg" /> */}
 
+  <Parallax
+    renderLayer={percentage => (
+      <div
+        style={{
+          background: `rgba(10, 10, 10, ${percentage * .7})`,
+          left: '50%',
+          top: '50%',
+          width: "100vw",
+          height: "60vh"
+        }}
+      />
+    )}
+  >
+  </Parallax>
 
+  {/* ======================== */ }
+  {/*          FOOTER          */ }
+  {/* ======================== */ }
+  <div className="page-footer">
 
-
-
-
-      <div className="body-splitter-lg" />
-
-      {/* ======================== */}
-      {/*          FOOTER          */}
-      {/* ======================== */}
-      {/* <div className="page-footer">
-
-
-        <Row className="show-grid text-center centered-flex">
-          <div className="btn-secondary-flex">
-            <Link to="/contact">
-              <Button className="btn-secondary">Contact</Button>
-            </Link>
+    <div className="footer-container">
+      <div className="grid-row-space">
+        <div className="footer-card-col">
+          <img className="logo" src={magusHat} />
+          <img className="logo-text" src={magusText} />
+          <div className="logo-desc">
+            <h3>Custom Web, Software, Mobile Design & Development</h3>
           </div>
-          <h5>Mexico City</h5>
-        </Row>
-      </div> */}
-
-      {/* <div
-
-        className="text-center centered-flex contact-div"
-      >
-        <div className="social-media-div">
-          <h1></h1>
-          <Row className="show-grid text-center">
-            <Col xs={12} sm={4}>
-              <Image src={img_fb} circle className="social-media-logo" />
-            </Col>
-
-            <Col xs={12} sm={4}>
-              <Image src={magusHat} circle className="social-media-logo" />
-            </Col>
-
-            <Col xs={12} sm={4}>
-              <Image src={img_logo} circle className="social-media-logo" />
-            </Col>
-          </Row>
         </div>
 
-      </div> */}
+        <div className="footer-card-col">
+          <h1>Our Services</h1>
+          <p>Website Development</p>
+          <p>Cusutom Software Development</p>
+          <p>Mobile Apps Development</p>
+          <p>IOT Solutions</p>
+          <p>Interactive Scenes & Games</p>
+        </div>
 
+        <div className="footer-card-col">
+          <div className="footer-card-row">
+            <div>
+              <h1>Contact Us</h1>
+            </div>
+          </div>
+
+          <div className="footer-card-row">
+            <a className="social-link" href="https://www.linkedin.com/in/jhogom/" target="_blank" rel="noreferrer">
+              <img className="social-left" src={linkedIn} />
+            </a>
+            <img className="social-right" src={email} onClick={() => toggleContact()} />
+
+            {
+              contact &&
+              <div>
+                <div className="modal-contact-bg" onClick={() => toggleContact()}>
+                </div>
+
+                <div className="modal-contact grid-col">
+
+                  <h2>Tell us about what your project</h2>
+
+                  <div className="grid-row-space">
+                    <h3 className="modal-label">Name</h3>
+                    <input className="modal-input" type="text" />
+                  </div>
+
+                  <div className="grid-row-space">
+                    <h3 className="modal-label">Email</h3>
+                    <input className="modal-input" type="text" />
+                  </div>
+
+                  <div className="grid-row-space">
+                    <h3 className="modal-label">Phone</h3>
+                    <input className="modal-input" type="text" />
+                  </div>
+
+                  <div className="grid-row-space">
+                    <h3 className="modal-label">Company</h3>
+                    <input className="modal-input" type="text" />
+                  </div>
+
+                  <div className="grid-row-space">
+                    <h3 className="modal-label">Subject</h3>
+                    <input className="modal-input" type="text" />
+                  </div>
+
+                  <div className="grid-row-space">
+                    <h3 className="modal-label">Message</h3>
+                    <textarea className="modal-input-lg" />
+                  </div>
+
+
+                  <div className="modal-row modal-control">
+                    <button className="modal-buttons" onClick={() => toggleContact()}> Cancel</button>
+                    <button className="modal-buttons" onClick={() => console.log("test")}>Send</button>
+                  </div>
+                </div>
+
+              </div>
+            }
+          </div>
+        </div>
+
+
+        <div className="footer-card-col"></div>
+
+
+      </div>
     </div>
+
+    <div className="signature-bar">
+      <div className="bg">
+      </div>
+      <div className="signature-left">
+        <h4 className="signature-text">Privacy Policy</h4>
+        <h4 className="signature-text">Cookies Policy</h4>
+      </div>
+      <div className="signature-right">
+        <h4 className="signature-text">
+          Magus Studio. CDMX, Mexico 2023</h4>
+      </div>
+    </div>
+
+  </div>
+
+
+    </div >
+
+
+
+
+
+
   );
 }
 
